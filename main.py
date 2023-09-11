@@ -293,6 +293,7 @@ class Display:
         # self.cameraB.z = self.x
         # self.cameraA.rz += 100 * dt
         self.cameraA.update(dt)
+        self.cameraB.update(dt)
 
     def resize(self, size):
         self.bgsurface = pygame.Surface(size, SRCALPHA)
@@ -309,8 +310,8 @@ class Display:
                 self.resize(event.size)
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_p:
-                    self.mode += 1
-                    self.mode %= MODE_COUNT
+                    self.cameraA.mode += 1
+                    self.cameraA.mode %= MODE_COUNT
                     self.resize(pygame.display.get_window_size())
             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 2:
                 self.rotstart = (self.cameraA.rx, self.cameraA.rz)
